@@ -1,5 +1,4 @@
 #include <SoftwareSerial.h>
-
 char a = 'a';
 
 void setup()

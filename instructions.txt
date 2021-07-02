@@ -1,0 +1,23 @@
+1. sudo nano /boot/config.txt
+
+		dtparam=spi=on
+		dtoverlay=pi3-disable-bt
+		core_freq=250
+		enable_uart=1
+		force_turbo=1
+		
+2. sudo cp /boot/cmdline.txt /boot/cmdline_backup.txt
+3. sudo nano /boot/cmdline.txt
+
+	dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait quiet splash plymouth.ignore-serial-consoles
+	
+4. sudo reboot
+
+5. ls -l /dev
+
+	sudo systemctl stop serial-getty@ttyAMA0.service
+	sudo systemctl disable serial-getty@ttyAMA0.service
+	
+6. sudo apt-get install minicom
+
+7. minicom -b 9600 -o -D /dev/ttyAMA0
